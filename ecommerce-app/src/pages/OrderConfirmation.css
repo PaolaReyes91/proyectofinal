@@ -1,0 +1,180 @@
+.order-confirmation {
+    /* Contenedor centralizado para la tarjeta de confirmación */
+    display: flex;
+    justify-content: center;
+    padding: var(--gap);
+    background-color: #f9f9f9; /* Fondo muy claro para distinguir del blanco del card */
+}
+
+.confirmation-content {
+    /* La tarjeta central que tiene la sombra */
+width: 100%;
+    max-width: 600px;
+    margin: 40px 0; 
+    padding: calc(var(--gap) * 1.5);
+    background: var(--color-fondo); 
+    /* APLICACIÓN DEL CAMBIO: 10px de borde redondeado */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    text-align: center;
+    color: var(--color-texto);
+}
+
+/* --- 2. Header y Éxito --- */
+.confirmation-icon {
+    margin-bottom: 16px;
+}
+
+.confirmation-icon .success {
+    /* Estilo del Icono de Check */
+    color: #4CAF50; /* Verde para indicar éxito */
+    font-size: 4rem;
+}
+
+.order-confirmation h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.confirmation-message {
+    font-size: 1rem;
+    color: var(--color-muted);
+    margin-bottom: calc(var(--gap) * 1.5);
+}
+
+.confirmation-message strong {
+    /* Resaltar el ID del pedido con el color de marca */
+    color: #A08CDA;
+    font-weight: 600;
+}
+
+/* --- 3. Detalles del Pedido (Estilo Recibo) --- */
+.confirmation-details {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.confirmation-details h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 12px;
+    margin: 0 0 16px 0;
+}
+
+.order-info p:first-child {
+    /* Estilo para la Fecha */
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-bottom: var(--gap);
+}
+
+.order-info h3 {
+    /* Título de Productos */
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--color-texto);
+}
+
+/* Lista de ítems del pedido */
+.order-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 calc(var(--gap) * 1.5) 0;
+}
+
+.order-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* --- Totales --- */
+.order-totals {
+    border-top: 1px dashed var(--color-border); /* Separador punteado */
+    padding-top: var(--gap);
+    margin-top: var(--gap);
+}
+
+.order-totals p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.order-totals p:last-child {
+    /* Total Final Resaltado */
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    padding-top: 15px;
+    border-top: 2px solid #A08CDA; /* Borde con Lila Oscuro */
+    margin-top: 15px;
+}
+
+/* --- 4. Nota de Correo y Acciones --- */
+.confirmation-details > p {
+    /* Estilo para la nota del correo */
+    background-color: #f7f3ff; /* Lila muy claro */
+    border-left: 5px solid #A08CDA; /* Borde con Lila Oscuro */
+    padding: 15px 20px;
+    margin: calc(var(--gap) * 1.5) 0;
+    font-size: 0.9rem;
+    color: #000;
+    border-radius: 4px;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: calc(var(--gap) * 1.5);
+}
+
+/* Estilo para los Link/Button */
+.confirmation-actions .button {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Botón Principal: Ver mis pedidos */
+.confirmation-actions .button.primary {
+    background-color: var(#A08CDA);
+    color: white;
+    border: 1px solid var(#A08CDA);
+}
+
+/* Botón Secundario: Volver al inicio */
+.confirmation-actions .button.primary{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid var(#A08CDA);
+
+}
+
+/* --- Estilo para el Pie de Página (Footer) --- */
+/* Asumiendo que el footer usa un color sólido (Lila oscuro) */
+.footer-container { 
+    background-color: var(#A08CDA);
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* Ajuste rápido para los enlaces internos del footer */
+.footer-container a {
+    color: #f5f5f5; /* Color claro para los enlaces del footer */
+    text-decoration: none;
+}

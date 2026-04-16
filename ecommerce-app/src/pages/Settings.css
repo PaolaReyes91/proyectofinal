@@ -1,0 +1,212 @@
+.settings-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--color-fondo);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(160, 140, 218, 0.1);
+  font-family: var(--font-body);
+  color: var(--color-texto);
+}
+
+.settings-container h2 {
+  font-family: var(--font-heading);
+  color: var(--color-secundario);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 2px solid var(--color-principal);
+  padding-bottom: 0.5rem;
+}
+
+/* Tabs / Navegación interna */
+.settings-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #666;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  color: var(--color-secundario);
+}
+
+.tab.active {
+  color: var(--color-secundario);
+  border-bottom-color: var(--color-secundario);
+}
+
+/* Contenido de las secciones */
+.settings-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.settings-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-secundario);
+}
+
+.settings-section p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.settings-section strong {
+  color: var(--color-secundario);
+}
+
+/* Checkboxes y Labels */
+.settings-section label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.settings-section label:hover {
+  background-color: var(--color-principal);
+  color: var(--color-texto);
+}
+
+.settings-section input[type="checkbox"] {
+  accent-color: var(--color-secundario);
+  width: 18px;
+  height: 18px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .settings-tabs {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .tab {
+    text-align: left;
+    width: 100%;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+  
+  .tab.active {
+    border-left-color: var(--color-secundario);
+    background-color: var(--color-principal);
+  }
+}
+
+.settings-section .button-danger, 
+button[variant="danger"] {
+  background: linear-gradient(135deg, var(--color-secundario) 0%, #ff9a9e 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.settings-section .button-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 154, 158, 0.4);
+}
+
+.settings-section .button-danger:active {
+  transform: translateY(0);
+}
+
+/* Estilo para los Labels de Privacidad y Notificaciones */
+.settings-section label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f9f7ff; /* Un blanco con un toque lila */
+  border: 1px solid var(--color-principal);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.settings-section label:hover {
+  background-color: var(--color-principal);
+  border-color: var(--color-secundario);
+}
+
+/* El separador visual entre secciones */
+.settings-section h3 {
+  border-left: 4px solid var(--color-secundario);
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #DCD0FF; /* Tu lila claro */
+  border-radius: 8px;
+  outline: none;
+}
+
+.settings-input:focus {
+  border-color: #A08CDA; /* Tu lila oscuro */
+  box-shadow: 0 0 5px rgba(160, 140, 218, 0.3);
+}
+
+.tab-btn.active {
+  background-color: #A08CDA;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn-change-password {
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-change-password:hover {
+  opacity: 0.9;
+  background-color: #8c79c4 !important; /* Un lila un poco más profundo al pasar el mouse */
+}
+
+.settings-input:focus {
+  border-color: #A08CDA;
+  box-shadow: 0 0 0 2px rgba(160, 140, 218, 0.2);
+}

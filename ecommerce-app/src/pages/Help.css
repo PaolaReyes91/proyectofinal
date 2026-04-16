@@ -1,0 +1,19 @@
+.help-container {
+  padding: 48px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.help-content {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.help-details {
+  margin-bottom: 16px;
+}
+
+.help-button {
+  margin-top: 24px;
+}

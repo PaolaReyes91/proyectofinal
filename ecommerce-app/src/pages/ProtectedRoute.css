@@ -1,0 +1,8 @@
+.access-denied {
+  text-align: center;
+  padding: 48px;
+}
+
+.access-denied h2 {
+  margin-bottom: 16px;
+}

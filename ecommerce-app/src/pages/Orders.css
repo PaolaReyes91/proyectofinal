@@ -1,0 +1,313 @@
+.orders-page {
+    width: min(1200px, 95%);
+    margin: 40px auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: calc(var(--gap) * 1.5);
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.orders-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.orders-header .eyebrow {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.orders-header .muted {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* --- Estilos para la vista vacía --- */
+.orders-empty {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--color-fondo);
+    border-radius: var(--radius);
+    box-shadow: var(--elev-1);
+    margin-top: 50px;
+}
+
+.orders-empty h1 {
+    font-size: 1.5rem;
+    margin: 15px 0 10px 0;
+}
+
+.orders-link {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+/* ======================================================= */
+/* 2. CONTENIDO PRINCIPAL: LISTA + DETALLE (GRID) */
+/* ======================================================= */
+
+.orders-content {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 1fr 2fr; /* 1/3 para la lista, 2/3 para el detalle */
+}
+
+/* --- Estilo de la tarjeta base --- */
+.card {
+    background: var(--color-fondo);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--gap);
+    box-shadow: var(--elev-1);
+    overflow: hidden; /* Para contener los bordes internos */
+}
+
+/* ======================================================= */
+/* 3. LISTA DE PEDIDOS (Orders List) */
+/* ======================================================= */
+
+.orders-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.orders-list-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.orders-list-header span {
+    background-color: var(--color-principal); /* Lila Pastel como fondo de conteo */
+    color: var(--color-texto);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.orders-list-body {
+    max-height: 60vh; /* Limitar altura para hacer scroll */
+    overflow-y: auto;
+    padding-right: 5px; /* Espacio para la barra de desplazamiento */
+}
+
+/* --- Tarjeta de pedido individual en la lista --- */
+.order-card {
+    display: block;
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    text-align: left;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.order-card:hover {
+    background-color: #f7f3ff; /* Lila muy claro al pasar el ratón */
+}
+
+.order-card.active {
+    background-color: #DCD0FF; /* Lila Pastel para el seleccionado */
+    border-color: #A08CDA; /* Borde con Lila oscuro */
+}
+
+.order-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.order-id {
+    font-weight: 600;
+    color: #000;
+    font-size: 0.95rem;
+}
+
+.order-date {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin: 0 0 8px 0;
+}
+
+.order-card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.order-card-meta strong {
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+/* --- Estilo para el Estado (Token) --- */
+.order-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.order-status-confirmed {
+    background-color: #e7efe5;
+    color: #4CAF50; 
+}
+
+
+.order-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: var(--gap);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.order-detail-header .eyebrow {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.order-detail-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-secundario); /* Total con color de marca */
+    margin: 5px 0;
+}
+
+.order-detail-header .muted {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+/* --- Secciones de Detalles (Resumen, Dirección, Productos) --- */
+.order-section {
+    margin-bottom: calc(var(--gap) * 1.5);
+    padding-bottom: var(--gap);
+    border-bottom: 1px dashed var(--color-border); /* Separador punteado */
+}
+
+.order-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.order-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: var(--color-texto);
+}
+
+/* --- Lista de Resumen (Subtotal, IVA, Envío) --- */
+.order-summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-summary-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--color-muted);
+}
+
+.order-summary-list li strong {
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+.order-summary-total {
+    border-top: 2px solid var(--color-secundario) !important; /* Total resaltado con Lila oscuro */
+    padding-top: 10px;
+    margin-top: 15px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700;
+    color: var(--color-texto) !important;
+}
+
+/* --- Dirección y Pago --- */
+.order-address strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.order-address p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+/* --- Lista de Productos en el Detalle --- */
+.order-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0;
+}
+
+.order-items li:last-child {
+    border-bottom: none;
+}
+
+.order-items li p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.order-items li span {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    display: block;
+}
+
+.order-items li strong {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* ======================================================= */
+/* 5. RESPONSIVE (Ajuste para móviles y tabletas) */
+/* ======================================================= */
+
+@media (max-width: 900px) {
+    .orders-content {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+
+    .orders-page {
+        margin: 20px auto;
+        width: 90%;
+    }
+}

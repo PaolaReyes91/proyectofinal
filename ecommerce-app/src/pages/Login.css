@@ -1,0 +1,121 @@
+/* ========================================= */
+/* 1. Contenedor Principal (Centrado y Sombra) */
+/* ========================================= */
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: calc(100vh - 150px); 
+    padding: 60px 20px;
+    background-color: #f7f3ff; 
+}
+
+.login-form-card {
+    background-color: white;
+    padding: 40px 40px;
+    border-radius: 12px;
+    box-shadow: none;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.login-form-card h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* 2. Sección de Usuarios de Prueba */
+/* ========================================= */
+.test-users-section {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+.test-users-section h4 {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.test-users-section p {
+    font-size: 0.85rem;
+    margin: 4px 0;
+    color: #444;
+}
+
+/* ========================================= */
+/* 3. Campos de Formulario (Inputs) */
+/* ========================================= */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Alineación del texto y etiquetas */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+    border-color: #A08CDA; /* Color lila de She Leads Academy al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(160, 140, 218, 0.3); /* Resplandor suave */
+}
+
+/* ========================================= */
+/* 4. Botones y Enlaces */
+/* ========================================= */
+.primary-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: #A08CDA; /* Lila principal */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    background-color: #8c73c9; /* Lila más oscuro al pasar el ratón */
+}
+
+.secondary-link {
+    display: block;
+    margin-top: 20px;
+    color: #A08CDA; /* Mismo color lila */
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.secondary-link:hover {
+    color: #8c73c9;
+    text-decoration: underline;
+}

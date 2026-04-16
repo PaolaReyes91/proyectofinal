@@ -1,0 +1,19 @@
+import { http } from "./http";
+
+export const isAuthenticated = () => {
+  const token = localStorage.getItem("authToken");
+  return token !== null;
+};
+
+export const getUserProfile = async () => {
+  const res = await http.get("users/profile");
+  const { message, user } = res.data;
+
+  if (!user) {
+    throw new Error("No se pudo obtener el perfil");
+  }
+
+  localStorage.setItem("userData", JSON.stringify(user));
+  console.log(message);
+  return user;
+};
