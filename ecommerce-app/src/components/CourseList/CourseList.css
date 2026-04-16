@@ -1,0 +1,89 @@
+/* Component Styles */
+
+.listSectionStyle {
+  padding: 60px 50px; 
+  text-align: center; 
+  background-color: #fff;
+}
+
+.listHeadingStyle {
+  font-size: 2.5rem; 
+  color: #A08CDA;
+  margin-bottom: 10px; 
+  text-align: center;
+}
+
+.listSubtitleStyle {
+  font-size: 1.1rem; 
+  color: #000;
+  margin-bottom: 40px; /* Corregido (y se quitó la coma al final) */
+}
+
+.gridContainerStyle {
+  display: grid; 
+  /* Corregido: Quitar comillas y asegurar la sintaxis CSS */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+.cardLinkStyle {
+  display: block; 
+  text-decoration: none; 
+  color: #000;
+}
+
+.cardStyle {
+  border: 1px solid var(--color-principal); 
+  border-radius: 8px; 
+  overflow: hidden; 
+  text-align: left; 
+  transition: box-shadow 0.3s, transform 0.3s; 
+  background-color: #FFF;
+}
+
+.imagePlaceholderStyle {
+  height: 200px; 
+  background-color: #DCD0FF;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  color: #000
+}
+
+.cardContentStyle {
+  padding: 20px; 
+}
+
+.cardTitleStyle {
+  font-size: 1.4rem; 
+  color: #A08CDA;
+  margin: 0 0 10px 0; 
+}
+
+.cardInfoStyle {
+  font-size: 0.9rem; 
+  color: #666;
+  margin-bottom: 15px; 
+}
+
+.cardFooterStyle {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 15px; 
+  padding-top: 15px; 
+  border-top: 1px dashed #DCD0FF;
+}
+
+.cardPriceStyle {
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  color: #A08CDA
+}
+
+.cardButtonStyle {
+  font-size: 0.8rem; 
+}
+

@@ -1,0 +1,84 @@
+/* ========================================= */
+/* 1. Estructura y Contenedores */
+/* ========================================= */
+.cart-view {
+  max-width: 900px; /* Reducimos el ancho máximo al quitar el sidebar */
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* 2. Eliminamos el Layout Flexbox para la lista y resumen */
+.cart-content-layout {
+    /* Ya no es un flexbox de dos columnas, solo envuelve la lista */
+    display: block; 
+}
+
+.cart-items-list {
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* ========================================= */
+/* 2. Estilo de Cada Ítem del Carrito (Grid) */
+/* ========================================= */
+.cart-item {
+  display: grid;
+  /* Reajustamos las columnas al quitar el sidebar y usar el ancho completo */
+  /* Columnas: Imagen, Info, Cantidad, Total, Eliminar */
+  grid-template-columns: 100px 3fr 1.5fr 1.5fr 50px; 
+  gap: 20px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+/* ... Mantener todos los estilos de .cart-item-image, .cart-item-info, .cart-item-quantity, .cart-item-total, .danger, etc. ... */
+
+
+/* ========================================= */
+/* 3. Botón de Checkout (Nuevo estilo de bloque) */
+/* ========================================= */
+.checkout-link-wrapper {
+    display: block;
+    margin-top: 30px;
+    text-align: right; /* Mueve el botón de proceder al pago a la derecha */
+}
+
+.checkout-btn {
+    width: 300px; /* Ancho fijo para el botón de acción principal */
+    padding: 15px;
+    background-color: #A08CDA;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* Aseguramos que el botón no sea más grande de lo necesario */
+    display: inline-block; 
+}
+
+.checkout-btn:hover {
+    background-color: #8c73c9;
+}
+
+
+/* ========================================= */
+/* 5. Adaptación Móvil */
+/* ========================================= */
+@media (max-width: 992px) {
+    /* Adaptar el grid de ítems para móvil (si es necesario) */
+    .cart-item {
+        grid-template-columns: 80px 2fr 1fr 50px; /* Quitamos una columna para que quepa */
+        /* ... el resto de la reestructuración de filas y columnas ... */
+    }
+
+    .checkout-link-wrapper {
+        text-align: center;
+    }
+    
+    .checkout-btn {
+        width: 100%; /* El botón ocupa todo el ancho en móvil */
+    }
+}

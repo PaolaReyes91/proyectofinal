@@ -1,0 +1,68 @@
+/* Theme Variables */
+:root {
+  /* Paleta de Colores - Base */
+  --color-principal: #DCD0FF;
+  --color-secundario: #A08CDA;
+  --color-fondo: #FFFFFF;
+  --color-texto: #000000;
+
+  /* Colores para componentes */
+  --color-white: #FFFFFF;
+  --color-blue: #A08CDA;
+  --color-strong-blue: #8B5CF6;
+  --color-pink: #EC4899;
+  --color-red: #EF4444;
+  --color-dark: #1F2937;
+  --color-gray: #6B7280;
+
+  /* Alias Semantic */
+  --primary: var(--color-secundario);
+  --accent: var(--color-secundario);
+  --accent-rgb: 160, 140, 218;
+  --accent-contrast: var(--color-white);
+  --surface: var(--color-white);
+  --background: var(--color-fondo);
+  --bg: var(--color-fondo);
+  --text: var(--color-texto);
+  --border: #E5E7EB;
+  --muted: var(--color-gray);
+  --danger: var(--color-red);
+
+  /* Espaciado */
+  --gap: 8px;
+  --gap-sm: 4px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+  --gap-2xl: 48px;
+
+  /* Bordes */
+  --radius: 8px;
+  --r2: 12px;
+
+  /* Sombras */
+  --elev-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --elev-2: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --elev-3: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Tipografía */
+  --font-body: 'Arial', sans-serif;
+  --font-heading: 'Georgia', serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Utility Classes */
+.muted {
+  color: var(--muted);
+}
