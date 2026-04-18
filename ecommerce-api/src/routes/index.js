@@ -14,14 +14,14 @@ import wishListRoutes from './wishListRoutes.js';
 const router = express.Router();
 
 router.use('/auth', authRoutes);
-router.use(cartRoutes);
-router.use(categoryRoutes);
-router.use(notificationRoutes);
+router.use('/cart', cartRoutes);
+router.use('/categories',categoryRoutes);
+router.use('/notifications', notificationRoutes);
 router.use('/orders', orderRoutes);
-router.use(paymentMethodRoutes);
-router.use(productRoutes);
-router.use(reviewRoutes);
-router.use(userRoutes);
+router.use('/payments',paymentMethodRoutes);
+router.use('/products', productRoutes);
+router.use('/reviews',reviewRoutes);
+router.use('/users', userRoutes);
 router.use('/wishlist', wishListRoutes);
 
 export default router;

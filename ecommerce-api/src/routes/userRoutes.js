@@ -48,11 +48,11 @@ const profileValidations = [
 ];
 
 // Obtener perfil del usuario autenticado
-router.get("/users/profile", authMiddleware, getUserProfile);
+router.get("/profile", authMiddleware, getUserProfile);
 
 // Obtener todos los usuarios (solo admin)
 router.get(
-  "/users",
+  "/",
   authMiddleware,
   isAdmin,
   [...paginationValidation(), queryRoleValidation(), queryIsActiveValidation()],
@@ -62,7 +62,7 @@ router.get(
 
 // Buscar usuarios (requiere autenticación)
 router.get(
-  "/users/search",
+  "/search",
   authMiddleware,
   [
     searchQueryValidation(),
@@ -78,7 +78,7 @@ router.get(
 
 // Obtener usuario por ID (solo admin)
 router.get(
-  "/users/:userId",
+  "/:userId",
   authMiddleware,
   isAdmin,
   [mongoIdValidation("userId", "User ID")],
@@ -105,11 +105,11 @@ router.post(
 );
 
 // Actualizar perfil del usuario (requiere autenticación)
-router.put("/users/profile", authMiddleware, profileValidations, validate, updateUserProfile);
+router.put("/profile", authMiddleware, profileValidations, validate, updateUserProfile);
 
 // Cambiar contraseña (requiere autenticación)
 router.put(
-  "/users/change-password",
+  "/change-password",
   authMiddleware,
   [
     body("currentPassword").notEmpty().withMessage("Current password is required"),
