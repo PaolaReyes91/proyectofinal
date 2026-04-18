@@ -7,13 +7,7 @@ export const CART_ACTIONS = {
 };
 
 export const cartInitialState = {
-  items: (() => {
-    try {
-      return JSON.parse(localStorage.getItem("cart")) || [];
-    } catch {
-      return [];
-    }
-  })(),
+  items: [],
 };
 
 export function cartReducer(state, action) {
