@@ -73,46 +73,35 @@ export default function Checkout() {
   }, [cartItems, navigate]);
 
   // FUNCIÓN CLAVE: Guardar orden en MongoDB
+  
   const handlePlaceOrder = async () => {
     if (!selectedPayment) return setLocalError("Selecciona un método de pago.");
 
-    try {
+    try { // <--- Aquí empieza el intento
       setIsProcessingOrder(true);
-      setLocalError(null);
+    
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    const userId = storedData?._id || storedData?.id;
 
-      // 1. Recuperar datos del usuario (ajusta según tu app)
-      const userData = JSON.parse(localStorage.getItem("userData"));
-      if (!userData?._id) throw new Error("Debes iniciar sesión para comprar.");
+    const savedOrder = await createOrder(
+      cartItems, 
+      userId, 
+      selectedPayment._id || selectedPayment.id
+    );
 
-      // 2. Estructura exacta para tu controlador createOrder
-      const orderPayload = {
-        user: userData._id,
-        products: cartItems.map(item => ({
-          productId: item._id, // Referencia al modelo Product
-          quantity: item.quantity || 1,
-          price: item.price
-        })),
-        paymentMethod: selectedPayment._id || selectedPayment.id,
-        shippingCost: 0 // Tu controlador lo suma al totalPrice
-      };
-
-      const token = localStorage.getItem("authToken");
-      
-      // 3. Petición POST al Backend
-      const savedOrder = await createOrder(orderPayload, token);
-
-      if (savedOrder && savedOrder._id) {
-        // Éxito: Bloqueamos redirección, limpiamos y navegamos
-        suppressRedirect.current = true;
-        clearCart();
-        navigate("/order-confirmation", { state: { order: savedOrder } });
-      }
-    } catch (err) {
-      setLocalError(err.message || "No se pudo procesar el pedido.");
-    } finally {
-      setIsProcessingOrder(false);
+    if (savedOrder?._id) {
+      suppressRedirect.current = true;
+      clearCart();
+      navigate("/order-confirmation", { state: { order: savedOrder } });
     }
-  };
+  } catch (err) { // <--- ESTO ES LO QUE TE FALTA
+    console.error("Error al crear la orden:", err);
+    setLocalError(err.response?.data?.error || "Error al procesar pedido.");
+  } finally { // <--- Opcional, pero recomendado para apagar el loading
+    setIsProcessingOrder(false);
+  }
+};
+
 
   // Métodos de gestión de pagos (Siguen igual)
   const handlePaymentSubmit = async (formData) => {

@@ -1,20 +1,28 @@
 import { http } from "./http";
 
-/**
- * Crea una nueva orden desde el Checkout.
- * URL: POST http://127.0.0.1:4000/api/orders
- */
-export const createOrder = async (orderData) => {
+export const createOrder = async (cartItems, userId, paymentMethodId) => {
   try {
-    // Agregamos la barra diagonal inicial para asegurar que parta de la baseURL configurada en axios
-    const response = await http.post("/orders", orderData);
+    const orderBody = {
+      user: userId,
+      paymentMethod: paymentMethodId,
+      shippingCost: 0,
+      // EL CAMBIO ESTÁ AQUÍ: Usar exactamente 'productId' y 'price'
+      products: cartItems.map(item => ({
+        productId: item.product?._id || item._id || item.id, 
+        price: item.price || item.product?.price,
+        quantity: item.quantity || 1
+      }))
+    };
+
+    console.log("Enviando al backend:", orderBody);
+
+    const response = await http.post("/orders", orderBody);
     return response.data;
   } catch (error) {
-    console.error("Error al crear la orden:", error.response?.data || error.message);
+    console.error("Error del backend:", error.response?.data);
     throw error;
   }
 };
-
 /**
  * Obtiene el historial de órdenes del usuario logueado.
  * URL: GET http://127.0.0.1:4000/api/orders/my-orders

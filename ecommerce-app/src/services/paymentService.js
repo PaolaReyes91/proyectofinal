@@ -22,7 +22,7 @@ export const getPaymentMethods = async () => {
 
     // 3. Llamamos a la ruta que configuraste en tu Backend: /user/:userId
     // Cambiamos "me" por el ID real para evitar el Error 500 y 404
-    const response = await http.get(`payment-methods/user/${userId}`);
+    const response = await http.get(`payments/user/${userId}`);
     
     // Devolvemos los datos o un arreglo vacío si no hay tarjetas
     return response.data || [];
@@ -57,7 +57,7 @@ export const createPaymentMethod = async (paymentData) => {
 
     console.log("Datos enviados al backend:", dataWithUser);
 
-    const response = await http.post("payment-methods", dataWithUser);
+    const response = await http.post("payments", dataWithUser);
     return response.data;
   } catch (error) {
     // Si el backend responde, imprimimos el mensaje exacto para saber qué falló
@@ -72,7 +72,7 @@ export const createPaymentMethod = async (paymentData) => {
 
 export const updatePaymentMethod = async (id, paymentData) => {
   try {
-    const response = await http.put(`payment-methods/${id}`, paymentData);
+    const response = await http.put(`payments/${id}`, paymentData);
     return response.data;
   } catch (error) {
     console.error("Error al actualizar método de pago:", error);
@@ -82,7 +82,7 @@ export const updatePaymentMethod = async (id, paymentData) => {
 
 export const deletePaymentMethod = async (id) => {
   try {
-    const response = await http.delete(`payment-methods/${id}`);
+    const response = await http.delete(`payments/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error al eliminar método de pago:", error);
