@@ -1,8 +1,11 @@
 import axios from "axios";
 
 // Cargamos la URL base desde las variables de entorno
-const APP_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:4000/api";
+const APP_BASE_URL = process.env.REACT_APP_API_BASE_URL 
+  ? `${process.env.REACT_APP_API_BASE_URL}/api` 
+  : "http://localhost:4000/api";
 
+  
 let logoutCallback = null;
 
 export const setLogoutCallback = (callback) => {
