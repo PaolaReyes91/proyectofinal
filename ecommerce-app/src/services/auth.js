@@ -41,9 +41,13 @@ export const refresh = async () => {
     if (!refreshToken) return null;
 
     // USAR AXIOS DIRECTO AQUÍ para evitar que el interceptor de 'http' capture el error
-    const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/refresh`, { 
+    //const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/refresh`, { 
+      //refreshToken
+    //});
+
+    const response = await axios.post("https://proyectofinal-udoo.onrender.com/api/auth/refresh", { 
       refreshToken
-    });
+        });
 
     const { token, refreshToken: newRefreshToken } = response.data;
 
