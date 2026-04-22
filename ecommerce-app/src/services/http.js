@@ -1,11 +1,6 @@
 import axios from "axios";
 
-// Cargamos la URL base desde las variables de entorno
-//const APP_BASE_URL = process.env.REACT_APP_API_BASE_URL 
-  //? `${process.env.REACT_APP_API_BASE_URL}/api` 
-  //: "http://localhost:4000/api";
-
-const APP_BASE_URL = "https://proyectofinal-udoo.onrender.com/api";
+const APP_BASE_URL = process.env.REACT_APP_API_BASE_URL 
 
 let logoutCallback = null;
 
