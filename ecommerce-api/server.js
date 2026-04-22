@@ -7,8 +7,9 @@ import logger from './src/middlewares/logger.js';
 import errorHandler from './src/middlewares/errorHandler.js';
 import setupGlobalErrorHandlers from './src/middlewares/globalErrorHandler.js';
 
-// 1. Configuración de variables de entorno
-dotenv.config();
+// 1. Configuración de entorno - carga el archivo correcto según NODE_ENV
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
 
 // 2. Manejo de errores globales (Excepciones no capturadas)
 setupGlobalErrorHandlers();
@@ -27,11 +28,20 @@ const corsOrigins = process.env.CORS_ORIGIN
   : ['http://localhost:3000'];
 
 app.use(cors({
-  "origin": corsOrigins,
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  credentials:true,
-  "optionsSuccessStatus": 204
+  origin: function (origin, callback) {
+    // Permitir peticiones sin origin o en producción
+    if (!origin || process.env.NODE_ENV === 'production') {
+      return callback(null, true);
+    }
+    
+    if (corsOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
 }));
 
 // 5. Logger de peticiones (opcional, según tu middleware)
