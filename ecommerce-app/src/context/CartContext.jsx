@@ -37,8 +37,9 @@ const { isAuth, user } = useAuth();
       if (isAuth && user?._id) {
         try {
           const backendCart = await cartService.getCart(user._id);
-          if (backendCart?.items) {
-            dispatch({ type: CART_ACTIONS.INIT, payload: backendCart.items });
+          // El backend devuelve 'products', no 'items'
+          if (backendCart?.products) {
+            dispatch({ type: CART_ACTIONS.INIT, payload: backendCart.products });
           }
         } catch (error) {
           console.error(error);
@@ -67,6 +68,7 @@ const { isAuth, user } = useAuth();
 
   const removeFromCart = useCallback(
     (productId) => {
+      console.log("Removing product with ID:", productId);
       dispatch({ type: CART_ACTIONS.REMOVE, payload: productId });
 
       syncToBackend(async () => {
@@ -92,10 +94,11 @@ const { isAuth, user } = useAuth();
 
   const addToCart = useCallback(
     (product, quantity = 1) => {
-      dispatch({ type: CART_ACTIONS.ADD, payload: { ...product, quantity } });
+      const productId = product._id || product.id;
+      dispatch({ type: CART_ACTIONS.ADD, payload: { ...product, _id: productId, quantity } });
 
       syncToBackend(async () => {
-        await cartService.addToCart(user._id, product._id, quantity);
+        await cartService.addToCart(user._id, productId, quantity);
       });
     },
     [syncToBackend, user],

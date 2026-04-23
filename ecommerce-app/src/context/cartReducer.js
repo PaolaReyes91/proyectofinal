@@ -17,20 +17,22 @@ export function cartReducer(state, action) {
       return { ...state, items };
     }
     case CART_ACTIONS.ADD: {
-      const p = action.payload; //{id,name,price,image,}
-      const exists = state.items.find((i) => i._id === p._id);
+      const p = action.payload;
+      // Aceptar tanto _id como id
+      const productId = p._id || p.id;
+      const exists = state.items.find((i) => (i._id || i.id) === productId);
       const items = exists
         ? state.items.map((i) =>
-            i._id === p._id
+            (i._id || i.id) === productId
               ? { ...i, quantity: i.quantity + (p.quantity || 1) }
               : i,
           )
-        : [...state.items, { ...p, quantity: p.quantity || 1 }];
+        : [...state.items, { ...p, _id: productId, quantity: p.quantity || 1 }];
       return { ...state, items };
     }
     case CART_ACTIONS.REMOVE: {
       const id = action.payload;
-      return { ...state, items: state.items.filter((i) => i._id !== id) };
+      return { ...state, items: state.items.filter((i) => (i._id || i.id) !== id) };
     }
     case CART_ACTIONS.SET_QTY: {
       const { _id, quantity } = action.payload;
@@ -38,7 +40,7 @@ export function cartReducer(state, action) {
       return {
         ...state,
         items: state.items.map((i) =>
-          i._id === _id ? { ...i, quantity: q } : i,
+          (i._id || i.id) === _id ? { ...i, quantity: q } : i,
         ),
       };
     }
