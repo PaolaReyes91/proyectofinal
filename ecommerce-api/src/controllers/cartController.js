@@ -118,7 +118,6 @@ async function addProductToCart(req, res, next) {
     let cart = await Cart.findOne({ user: userId });
 
     if (!cart) {
-      // Si no existe, lo creamos automáticamente
       cart = new Cart({
         user: userId,
         products: [{ product: productId, quantity }]
@@ -144,6 +143,40 @@ async function addProductToCart(req, res, next) {
   }
 }
 
+// 8. Remover un producto del carrito
+async function removeProductFromCart(req, res, next) {
+  try {
+    const { productId } = req.params;
+    const userId = req.body.userId;
+
+    if (!userId || !productId) {
+      return res.status(400).json({ error: 'User ID and product ID are required' });
+    }
+
+    const cart = await Cart.findOne({ user: userId });
+
+    if (!cart) {
+      return res.status(404).json({ message: 'Cart not found' });
+    }
+
+    const productIndex = cart.products.findIndex(
+      item => item.product.toString() === productId
+    );
+
+    if (productIndex === -1) {
+      return res.status(404).json({ message: 'Product not found in cart' });
+    }
+
+    cart.products.splice(productIndex, 1);
+    await cart.save();
+    await cart.populate(['user', 'products.product']);
+
+    res.status(200).json(cart);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export {
   getCarts,
   getCartById,
@@ -152,4 +185,5 @@ export {
   updateCart,
   deleteCart,
   addProductToCart,
+  removeProductFromCart,
 };
