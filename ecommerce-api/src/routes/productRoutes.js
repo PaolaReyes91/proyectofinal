@@ -16,19 +16,19 @@ import validate  from '../middlewares/validation.js';
 
 const router = express.Router();
 
-router.get('/products', getProducts);
-router.get('/products/search',[
+router.get('/', getProducts);
+router.get('/search',[
   query('minPrice').optional().isNumeric({min: 0}).withMessage('este campo debbe ser un numero positivo'),
   query('maxPrice').optional().isNumeric({min: 1}).withMessage('este campo debe ser un numero '),
   query('page').optional().isInt({min: 1}).withMessage('este campo debe ser un numero positivo'),
   query('limit').optional().isInt({min: 1}).withMessage('este campo debe ser un numero positivo'),
  ],validate, searchProducts);
 
-router.get('/products/category/:idCategory', getProductByCategory);
-router.get('/products/:id', getProductById);
-router.post('/products', authMiddleware, isAdmin, createProduct);
-router.put('/products/:id', authMiddleware, isAdmin, updateProduct);
-router.delete('/products/:id', authMiddleware, isAdmin, deleteProduct);
+router.get('/category/:idCategory', getProductByCategory);
+router.get('/:id', getProductById);
+router.post('/', authMiddleware, isAdmin, createProduct);
+router.put('/:id', authMiddleware, isAdmin, updateProduct);
+router.delete('/:id', authMiddleware, isAdmin, deleteProduct);
 
 
 export default router;
