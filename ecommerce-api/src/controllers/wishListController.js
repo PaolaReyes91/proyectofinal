@@ -7,7 +7,7 @@ const getUserWishList = async (req, res, next) => {
     const userId = req.user.userId; // Asumiendo que tienes middleware de autenticación
 
     let wishList = await WishList.findOne({ user: userId })
-      .populate('products.product', 'name price images category inStock');
+      .populate('products.product', 'name price imagesUrl category inStock');
 
     if (!wishList) {
       // Crear una wishlist vacía si no existe
@@ -60,7 +60,7 @@ const addToWishList = async (req, res, next) => {
     }
 
     await wishList.save();
-    await wishList.populate('products.product', 'name price images category inStock');
+    await wishList.populate('products.product', 'name price imagesUrl category inStock');
 
     res.status(200).json({
       message: 'Product added to wishlist successfully',
@@ -96,7 +96,7 @@ const removeFromWishList = async (req, res, next) => {
     wishList.products.splice(productIndex, 1);
     await wishList.save();
 
-    await wishList.populate('products.product', 'name price images category inStock');
+    await wishList.populate('products.product', 'name price imagesUrl category inStock');
 
     res.status(200).json({
       message: 'Product removed from wishlist successfully',
