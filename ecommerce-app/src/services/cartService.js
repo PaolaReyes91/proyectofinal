@@ -35,9 +35,6 @@ export const updateCartItem = async (userId, productId, quantity) => {
 
 export const removeToCart = async (userId, productId) => {
   try {
-    /** * CORRECCIÓN: Agregué la "/" inicial antes de 'cart'. 
-     * Sin ella, Axios podría intentar concatenar mal la URL.
-     */
     const response = await http.delete(`/cart/remove-item/${productId}`, {
       data: { userId },
     });
